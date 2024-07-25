@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+<section class="h-[70dvh] flex items-center justify-center">
+  <div class="w-3/6 p-6 bg-blue-600 text-gray-50">
+    <h1 class="p-3 text-5xl">TODO APP</h1>
+    <div>
+      <form action="/task" method="POST">
+        <div class="flex flex-col gap-3 p-3 text-gray-50">
+          <label for="task" class="text-3xl font-bold">Your Task</label>
+          <input
+            id="task"
+            name="taskName"
+            placeholder="e.g Deliver repairs"
+            type="text"
+            class="p-3 text-gray-800 border"
+            required
+          />
+        </div>
+        <div class="p-3">
+          <button
+            type="submit"
+            class="w-full py-3 text-lg font-bold text-gray-500 bg-gray-100"
+          >
+            Add Task
+          </button>
+        </div>
+      </form>
+      <div class="p-3">
+        <h1 class="text-3xl font-bold">List of Task</h1>
+
+        <ul class="p-3 bg-gray-50">
+          <% foundTask.forEach((data) =>{ %>
+          <li
+            class="flex items-center justify-between p-2 px-3 my-3 text-xl font-bold text-gray-800 bg-gray-300 shadow-md rounded-2xl"
+          >
+            <%= data.taskName %>
+            <div>
+              <a
+                href="/<%= data._id%>"
+                class="inline-block p-3 bg-blue-800 text-gray-50"
+                >Update</a
+              >
+              <a
+                href="/delete/<%= data._id%>"
+                class="inline-block p-3 bg-red-800 rounded-lg text-gray-50"
+                >Delete</a
+              >
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

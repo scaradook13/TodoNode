@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<section class="h-[70dvh] flex items-center justify-center">
+  <div class="w-3/6 p-6 bg-blue-600 text-gray-50">
+    <h1 class="p-3 text-5xl">Delete TODO</h1>
+    <div>
+      <form action="/delete" method="POST">
+        <div class="flex flex-col gap-3 p-3 text-gray-50">
+          <label for="task" class="text-5xl font-bold">Are you sure you want to delete?</label>
+          <input
+            value="<%=task.taskName %>"
+            id="task"
+            name="taskName"
+            placeholder="e.g Deliver repairs"
+            type="text"
+            class="p-3 text-2xl text-gray-800 border"
+            required
+            disabled
+          />
+        </div>
+        <input hidden name="id" value="<%= task._id %>"> </input>
+        <div class="flex gap-6 p-3">
+          <a href="/"
+            class="w-full py-3 text-lg font-bold text-center text-gray-500 bg-gray-100"
+          >
+           Cancel
+          </a>
+          <button
+            type="submit"
+            class="w-full py-3 text-lg font-bold text-white bg-red-700 "
+          >
+            Remove Task
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
